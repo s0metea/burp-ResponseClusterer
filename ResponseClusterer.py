@@ -281,7 +281,7 @@ class BurpExtender(IBurpExtender, ITab, IHttpListener, IMessageEditorController,
         self._log_entries.append((toolFlag, request, response, service_url))
         iResponseInfo = self._helpers.analyzeResponse(response)
         body = response[iResponseInfo.getBodyOffset():]
-        self._clusters.add((iResponseInfo.getStatusCode(), body))
+        self._clusters.add((iResponseInfo.getStatusCode(), str(body)))
         row = self._log.size()
         service = CustomHttpService(service_url)
         r = CustomRequestResponse(None, None, service, request, response)
